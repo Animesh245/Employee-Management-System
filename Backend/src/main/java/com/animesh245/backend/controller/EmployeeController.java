@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/")
+@CrossOrigin(origins = "http://localhost:4200")// when modules are run separately
 public class EmployeeController {
 
     @Autowired
