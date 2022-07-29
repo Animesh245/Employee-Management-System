@@ -1,0 +1,24 @@
+<h2> Employee-List </h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> Firstname </th>
+            <th> Lastname </th>
+            <th> Email </th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- here employees won't be recognised until u introduce in employee-list component -->
+        <tr *ngFor="let employee of employees">
+            <td> {{employee.firstName}} </td>
+            <td> {{employee.lastName}} </td>
+            <td> {{employee.email}} </td>
+            <td> 
+                <button (click)="updateEmployee(employee.id)  " class="btn btn-outline-warning"> Update </button>
+                 <button (click)="deleteEmployee(employee.id)" class="btn btn-outline-danger" style="margin-left: 10px"> Delete </button>
+                 <button (click)="employeeDetails(employee.id)" class="btn btn-outline-info" style="margin-left: 10px"> View </button>
+                </td>
+        </tr>
+    </tbody>
+</table>
