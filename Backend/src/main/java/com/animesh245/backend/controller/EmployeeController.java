@@ -4,10 +4,13 @@ import com.animesh245.backend.exception.EmployeeNotFoundException;
 import com.animesh245.backend.model.Employee;
 import com.animesh245.backend.repo.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/v1/")
@@ -39,31 +42,37 @@ public class EmployeeController {
 
     //Get Single Employee
     @GetMapping("/employees/{id}")
-    Employee getEmployee(@PathVariable Long id)
+    ResponseEntity<Employee> getEmployee(@PathVariable Long id)
     {
-        return employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
+        return ResponseEntity.ok(employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id)));
     }
 
     //Update single employee
     @PutMapping("/employees/{id}")
-    Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id)
+    ResponseEntity<Employee> replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id)
     {
-        return employeeRepository.findById(id).map(employee -> {
+        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
+
             employee.setFirstName(newEmployee.getFirstName());
             employee.setLastName(newEmployee.getLastName());
             employee.setEmail(newEmployee.getEmail());
 
-            return employeeRepository.save(employee);})
-                .orElseGet(() -> {
-            newEmployee.setId(id);
-            return employeeRepository.save(newEmployee);
-        });
+            Employee updatedEmployee = employeeRepository.save(employee);
+
+            return ResponseEntity.ok(updatedEmployee);
     }
 
     //Delete Employee
     @DeleteMapping("/employees/{id}")
-    void deleteEmployee(@PathVariable Long id)
+    ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id)
     {
-        employeeRepository.deleteById(id);
+
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException(id));
+
+        employeeRepository.delete(employee);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("Deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }
