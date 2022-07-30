@@ -6,8 +6,8 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 
 const routes: Routes = [
-    //by default routing
-    {path:'', redirectTo: 'employees', pathMatch: 'full'},
+  //by default routing
+  {path:'', redirectTo: 'employees', pathMatch: 'full'},
   //for all employees
   {path: 'employees', component: EmployeeListComponent},
   //routing for create-employee
