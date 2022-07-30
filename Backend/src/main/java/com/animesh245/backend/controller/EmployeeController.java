@@ -47,7 +47,7 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id)));
     }
 
-    //Update single employee
+    //Update single employee , next time try to use email for updating
     @PutMapping("/employees/{id}")
     ResponseEntity<Employee> replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id)
     {
