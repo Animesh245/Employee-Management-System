@@ -7,8 +7,6 @@ This project was done to practise materials from an online course.
 
     
 ## Demo
-
-Insert gif or link to demo
 ![Untitled design](https://user-images.githubusercontent.com/64697529/181846186-7affc91e-9815-4d25-a32e-759cfcd79652.gif)
 
 ## Features
