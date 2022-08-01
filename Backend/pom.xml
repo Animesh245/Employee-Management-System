@@ -7,51 +7,20 @@
         <artifactId>Employee_REST_APi</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
     <artifactId>Backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Backend</name>
     <description>Backend</description>
-    <packaging>jar</packaging>
-
-
+    <properties>
+        <java.version>11</java.version>
+    </properties>
     <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-jpa</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-devtools</artifactId>
-                <scope>runtime</scope>
-                <optional>true</optional>
-            </dependency>
-            <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <scope>runtime</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <optional>true</optional>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <scope>test</scope>
-            </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.Animesh245</groupId>-->
-<!--            <artifactId>Frontend</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.Animesh245</groupId>-->
+        <!--            <artifactId>Frontend</artifactId>-->
+        <!--            <version>${project.version}</version>-->
+        <!--            <scope>runtime</scope>-->
+        <!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -68,7 +37,19 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+<!--           Problem: The empty resources/static directory is ignored by maven plugin
+               Solution: Add this plugin with "includedEmptyDirs:true"-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <includeEmptyDirs>true</includeEmptyDirs>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
 </project>
+
