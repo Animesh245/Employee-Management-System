@@ -13,7 +13,7 @@ import java.io.InputStream;
 @Service
 public class FileService{
 
-    public final String UPLOAD_DIR = new ClassPathResource("static/files/").getFile().getAbsolutePath();
+    public final String UPLOAD_DIR = new ClassPathResource("static/file/").getFile().getAbsolutePath();
 
     public FileService() throws IOException {
     }
