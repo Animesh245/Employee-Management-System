@@ -7,12 +7,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.util.Objects;
+
 
 @RestController
 public class FileController {
 
     @Autowired
-    FileService fileService;
+    private FileService fileService;
     @PostMapping("/upload-file")
     public ResponseEntity<String> uploadFile(@RequestParam("file")MultipartFile file)
     {
@@ -33,7 +37,8 @@ public class FileController {
 
             if(f)
             {
-                return ResponseEntity.ok("File uploaded successfully");
+                //localhost:8080/file/xxxix.filetype
+                return ResponseEntity.ok(ServletUriComponentsBuilder.fromCurrentContextPath().path("/file/").path(Objects.requireNonNull(file.getOriginalFilename())).toUriString()); // Objects.requireNonNull() calls only nonNull value
             }
         }catch (Exception e)
         {
