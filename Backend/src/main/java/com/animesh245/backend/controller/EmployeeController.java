@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/api/v1/")
+@RequestMapping(value = "/api/v1")
 @CrossOrigin(origins = "http://localhost:4200")// when modules are run separately
 public class EmployeeController {
 
