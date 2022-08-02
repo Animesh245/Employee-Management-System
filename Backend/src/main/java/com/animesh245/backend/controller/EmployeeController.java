@@ -51,13 +51,13 @@ public class EmployeeController {
     @PutMapping("/employees/{id}")
     ResponseEntity<Employee> replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id)
     {
-        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
+            employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
 
-            employee.setFirstName(newEmployee.getFirstName());
-            employee.setLastName(newEmployee.getLastName());
-            employee.setEmail(newEmployee.getEmail());
+//            employee.setFirstName(newEmployee.getFirstName());
+//            employee.setLastName(newEmployee.getLastName());
+//            employee.setEmail(newEmployee.getEmail());
 
-            Employee updatedEmployee = employeeRepository.save(employee);
+            Employee updatedEmployee = employeeRepository.save(newEmployee);
 
             return ResponseEntity.ok(updatedEmployee);
     }
