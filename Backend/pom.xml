@@ -15,12 +15,12 @@
         <java.version>11</java.version>
     </properties>
     <dependencies>
-        <!--        <dependency>-->
-        <!--            <groupId>com.Animesh245</groupId>-->
-        <!--            <artifactId>Frontend</artifactId>-->
-        <!--            <version>${project.version}</version>-->
-        <!--            <scope>runtime</scope>-->
-        <!--        </dependency>-->
+                <dependency>
+                    <groupId>com.Animesh245</groupId>
+                    <artifactId>Frontend</artifactId>
+                    <version>${project.version}</version>
+                    <scope>runtime</scope>
+                </dependency>
     </dependencies>
 
     <build>
@@ -50,6 +50,5 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
 
