@@ -1,25 +1,20 @@
-package com.animesh245.backend.service;
+package com.animesh245.backend.service.implementation;
 
-import org.springframework.core.io.ClassPathResource;
+import com.animesh245.backend.config.Properties;
+import com.animesh245.backend.service.definition.FileService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 
 @Service
-public class FileService{
-
-    public final String UPLOAD_DIR = new ClassPathResource("static/file/").getFile().getAbsolutePath();
-
-    public FileService() throws IOException {
-    }
+@Transactional
+public class FileServiceImpl implements FileService {
 
     public boolean uploadFile(MultipartFile file)
     {
@@ -41,7 +36,7 @@ public class FileService{
 //            fos.close();
 
             //If using NIO package and InputStream
-            Files.copy(file.getInputStream(), Paths.get(UPLOAD_DIR+File.separator+file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(file.getInputStream(), Paths.get(Properties.WRITE_PATH +File.separator+file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
 
             status=true;
         }catch (Exception e)
