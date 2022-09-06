@@ -4,6 +4,7 @@ import com.animesh245.backend.config.Properties;
 import com.animesh245.backend.service.definition.FileService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import java.io.File;
@@ -16,9 +17,8 @@ import java.nio.file.StandardCopyOption;
 @Transactional
 public class FileServiceImpl implements FileService {
 
-    public boolean uploadFile(MultipartFile file)
+    public String uploadFile(MultipartFile file)
     {
-        boolean status = false;
 
         try {
 
@@ -38,11 +38,10 @@ public class FileServiceImpl implements FileService {
             //If using NIO package and InputStream
             Files.copy(file.getInputStream(), Paths.get(Properties.WRITE_PATH +File.separator+file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
 
-            status=true;
         }catch (Exception e)
         {
             e.printStackTrace();
         }
-        return status;
+        return ServletUriComponentsBuilder.fromCurrentContextPath().path(Properties.WRITE_PATH +File.separator+file.getOriginalFilename()).toUriString();
     }
 }
