@@ -32,6 +32,21 @@ public class ProjectServiceImpl implements ProjectService
     }
 
     @Override
+    public List<Project> findByEmployee(String employeeName)
+    {
+        Employee employee = employeeService.findEmployeeByName(employeeName);
+        List<Project> projectList = projectRepository.findProjectsByEmployeesContaining(employee);
+        return projectList;
+    }
+
+//    @Override
+//    public Project findByName(String projectName)
+//    {
+//        Project project = projectRepository.findProjectByProjectName(projectName);
+//        return project;
+//    }
+
+    @Override
     public void saveProject(RequestProject requestProject)
     {
         var project = dtoToEntity(requestProject);
