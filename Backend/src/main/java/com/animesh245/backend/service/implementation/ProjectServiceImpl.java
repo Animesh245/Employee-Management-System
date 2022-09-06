@@ -35,16 +35,14 @@ public class ProjectServiceImpl implements ProjectService
     public List<Project> findByEmployee(String employeeName)
     {
         Employee employee = employeeService.findEmployeeByName(employeeName);
-        List<Project> projectList = projectRepository.findProjectsByEmployeesContaining(employee);
-        return projectList;
+        return projectRepository.findProjectsByEmployeesContaining(employee);
     }
 
-//    @Override
-//    public Project findByName(String projectName)
-//    {
-//        Project project = projectRepository.findProjectByProjectName(projectName);
-//        return project;
-//    }
+    @Override
+    public Project findByName(String projectName)
+    {
+        return projectRepository.findProjectByProjectName(projectName);
+    }
 
     @Override
     public void saveProject(RequestProject requestProject)
