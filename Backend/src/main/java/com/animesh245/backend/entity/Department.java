@@ -28,8 +28,8 @@ public class Department
     @JoinColumn(name = "manager", referencedColumnName = "id")
     private Employee deptManager;
 
-    @OneToOne()
-    private Employee employee;
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "worksIn",cascade = CascadeType.ALL)
+    private List<Employee> employeeList;
 
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "department")
     List<Project> projects;

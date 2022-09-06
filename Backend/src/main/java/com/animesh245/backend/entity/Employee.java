@@ -41,8 +41,8 @@ public class Employee
     @Column(name = "end_time")
     private LocalDateTime projectEndTime;
 
-    @OneToOne()
-    private Department department;
+    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "deptManager")
+    private Department department; //department manager
 
     @JoinColumn(name = "current_project", referencedColumnName = "id")
     @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
@@ -63,7 +63,7 @@ public class Employee
     @Column(name = "path")
     private String profilePhotoPath;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "works_in", referencedColumnName = "id")
     private Department worksIn;
 
