@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -35,24 +34,24 @@ public class Employee
     @Column(name = "work_schedule")
     private WorkSchedule workSchedule;
 
-    @Column(name = "start_time")
-    private LocalDateTime projectStartTime;
-
-    @Column(name = "end_time")
-    private LocalDateTime projectEndTime;
+//    @Column(name = "start_time")
+//    private LocalDateTime projectStartTime;
+//
+//    @Column(name = "end_time")
+//    private LocalDateTime projectEndTime;
 
     @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "deptManager")
     private Department department; //department manager
 
-    @JoinColumn(name = "current_project", referencedColumnName = "id")
-    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
-    private Project currentProject;
+//    @JoinColumn(name = "current_project", referencedColumnName = "id")
+//    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
+//    private Project currentProject;
 
-    @Column(name = "login_time")
-    private LocalDateTime loginTime;
-
-    @Column(name = "logout_time")
-    private LocalDateTime logoutTime;
+//    @Column(name = "login_time")
+//    private LocalDateTime loginTime;
+//
+//    @Column(name = "logout_time")
+//    private LocalDateTime logoutTime;
 
     @Column(name = "on_leave")
     private Boolean onLeave;
