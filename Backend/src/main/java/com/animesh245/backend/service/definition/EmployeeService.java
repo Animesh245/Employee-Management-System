@@ -16,6 +16,8 @@ public interface EmployeeService
 
     Employee findEmployeeByName(String  employeeName);
 
+    Employee findByRole(String role);
+
     void saveEmployee(RequestEmployee requestEmployee);
 
     void updateEmployee(String id, RequestEmployee requestEmployee);
