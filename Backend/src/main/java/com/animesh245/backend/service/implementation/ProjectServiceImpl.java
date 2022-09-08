@@ -34,8 +34,15 @@ public class ProjectServiceImpl implements ProjectService
         this.departmentService = departmentService;
     }
 
+//    @Override
+//    public List<Project> findByEmployee(String employeeName)
+//    {
+//        Employee employee = employeeService.findEmployeeByName(employeeName);
+//        return projectRepository.findProjectsByEmployeesContaining(employee);
+//    }
+
     @Override
-    public List<Project> findByEmployee(String employeeName)
+    public List<Employee> findEmployeesByProject(String projectName)
     {
         return projectRepository.findEmployeesByProject(projectName);
     }
@@ -99,7 +106,7 @@ public class ProjectServiceImpl implements ProjectService
     public Project dtoToEntity(RequestProject requestProject)
     {
         var department = departmentService.findDepartmentByName(requestProject.getDepartment());
-        var employeeList = employeeService.findEmployeesByProject(requestProject.getProjectName());
+//        var employeeList = employeeService.findEmployeesByProject(requestProject.getProjectName());
 
         var project = new Project();
         BeanUtils.copyProperties(requestProject,project);
