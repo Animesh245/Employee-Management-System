@@ -1,5 +1,6 @@
 package com.animesh245.backend.entity;
 
+import com.animesh245.backend.enums.Role;
 import com.animesh245.backend.enums.WorkSchedule;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,6 +34,10 @@ public class Employee
     @Enumerated(EnumType.STRING)
     @Column(name = "work_schedule")
     private WorkSchedule workSchedule;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Role role;
 
 //    @Column(name = "start_time")
 //    private LocalDateTime projectStartTime;

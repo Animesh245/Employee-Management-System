@@ -13,6 +13,7 @@ public class RequestEmployee
     private String dateOfBirth;
     private String workSchedule;
     private String dateOfJoin;
+    private String role;
     private String worksIn;
     private String email;
     private MultipartFile profilePhoto;

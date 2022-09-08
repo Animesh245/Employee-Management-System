@@ -4,6 +4,7 @@ import com.animesh245.backend.dtos.request.RequestDepartment;
 import com.animesh245.backend.dtos.response.ResponseDepartment;
 import com.animesh245.backend.entity.Department;
 import com.animesh245.backend.entity.Project;
+import com.animesh245.backend.enums.Role;
 import com.animesh245.backend.exception.NotFoundException;
 import com.animesh245.backend.repository.DepartmentRepository;
 import com.animesh245.backend.repository.ProjectRepository;
@@ -81,12 +82,12 @@ public class DepartmentServiceImpl implements DepartmentService
     @Override
     public Department dtoToEntity(RequestDepartment requestDepartment)
     {
-        List<Project> projectList = projectRepository.findProjectsByDepartment(requestDepartment.getDeptName());
+        String manager = employeeService.findEmployeeByName(requestDepartment.getDeptManager()).getFullName();
 
         var department = new Department();
-        BeanUtils.copyProperties(department, requestDepartment);
-        department.setDeptManager(employeeService.findEmployeeByName(requestDepartment.getDeptManager()));
-        department.setProjects(projectList);
+        BeanUtils.copyProperties(requestDepartment, department);
+        department.setDeptManager(manager);
+
         return department;
     }
 
@@ -100,9 +101,24 @@ public class DepartmentServiceImpl implements DepartmentService
             projectNameList.add(project.getProjectName());
         }
 
+        String manager = new String();
+
+        Set<Employee> employeeList = department.getEmployeeList();
+        var employeeNameList = new ArrayList<String >();
+        for (Employee employee: employeeList)
+        {
+            employeeNameList.add(employee.getFullName());
+            if (employee.getRole() == Role.MANAGER)
+            {
+                manager = employee.getFullName();
+            }
+        }
+
         var responseDepartment = new ResponseDepartment();
         BeanUtils.copyProperties(department,responseDepartment);
+        responseDepartment.setDeptManager(manager);
         responseDepartment.setProjectList(projectNameList);
+        responseDepartment.setEmployeeList(employeeNameList);
         return responseDepartment;
     }
 }

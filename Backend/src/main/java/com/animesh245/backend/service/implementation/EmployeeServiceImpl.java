@@ -5,6 +5,7 @@ import com.animesh245.backend.dtos.response.ResponseEmployee;
 import com.animesh245.backend.entity.Dependent;
 import com.animesh245.backend.entity.Employee;
 import com.animesh245.backend.entity.Project;
+import com.animesh245.backend.enums.Role;
 import com.animesh245.backend.enums.WorkSchedule;
 import com.animesh245.backend.exception.NotFoundException;
 import com.animesh245.backend.repository.EmployeeRepository;
@@ -64,6 +65,12 @@ public class EmployeeServiceImpl implements EmployeeService
     }
 
     @Override
+    public Employee findByRole(String role)
+    {
+        return employeeRepository.findEmployeeByRole(Role.valueOf(role));
+    }
+
+    @Override
     public void saveEmployee(RequestEmployee requestEmployee)
     {
         employeeRepository.save(dtoToEntity(requestEmployee));
@@ -100,7 +107,7 @@ public class EmployeeServiceImpl implements EmployeeService
         responseEmployee.setDateOfBirth(employee.getDateOfBirth().toString());
         responseEmployee.setDateOfJoin(employee.getDateOfJoin().toString());
         responseEmployee.setWorksIn(employee.getWorksIn().getDeptName());
-        responseEmployee.setWorkSchedule(employee.getWorkSchedule().toString());
+        responseEmployee.setRole(employee.getRole().toString());
         responseEmployee.setProjectList(responseProjectList);
         responseEmployee.setDependentList(responseDependentList);
 
@@ -116,8 +123,7 @@ public class EmployeeServiceImpl implements EmployeeService
         employee.setWorkSchedule(WorkSchedule.valueOf(requestEmployee.getWorkSchedule()));
         employee.setOnLeave(false);
         employee.setDateOfJoin(LocalDate.parse(requestEmployee.getDateOfJoin()));
-        employee.setWorksIn(departmentService.findDepartmentByName(requestEmployee.getWorksIn()));
-        employee.setProfilePhotoPath(fileService.uploadFile(requestEmployee.getProfilePhoto()));
+        employee.setRole(Role.valueOf(requestEmployee.getRole()));
 
         return employee;
     }

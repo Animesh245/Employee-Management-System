@@ -16,6 +16,7 @@ public class ResponseEmployee
     private String workSchedule;
     private String dateOfJoin;
     private String worksIn;
+    private String role;
     private List<String > projectList;
     private List<String > dependentList;
     private String profilePhotoPath;
