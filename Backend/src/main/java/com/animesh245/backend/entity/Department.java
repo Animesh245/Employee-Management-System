@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -29,8 +29,8 @@ public class Department
     private Employee deptManager;
 
     @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "worksIn",cascade = CascadeType.ALL)
-    private List<Employee> employeeList;
+    private Set<Employee> employeeList;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "department")
-    List<Project> projects;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
+    private Set<Project> projects;
 }

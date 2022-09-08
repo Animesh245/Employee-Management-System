@@ -17,6 +17,8 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 @Service
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService
@@ -88,14 +90,14 @@ public class EmployeeServiceImpl implements EmployeeService
     @Override
     public ResponseEmployee entityToDto(Employee employee)
     {
-        List<Project> projectList = employee.getProjects();
+        Set<Project> projectList = employee.getProjects();
         List<String> responseProjectList = new ArrayList<>();
         for (Project project: projectList)
         {
             responseProjectList.add(project.getProjectName());
         }
 
-        List<Dependent> dependentList = employee.getDependents();
+        Set<Dependent> dependentList = employee.getDependents();
         List<String > responseDependentList = new ArrayList<>();
         for (Dependent dependent: dependentList)
         {

@@ -31,7 +31,6 @@ public class Project
     @JoinColumn(name = "department_id", referencedColumnName = "id")
     private Department department;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "employee_projects", joinColumns = {@JoinColumn(name = "project_id", referencedColumnName = "id")},inverseJoinColumns = {@JoinColumn(name = "employee_id", referencedColumnName = "id")})
-    private List<Employee> employees;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "projects")
+    private Set<Employee> employees;
 }

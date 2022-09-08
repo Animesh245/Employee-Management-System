@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -72,8 +72,10 @@ public class Employee
     private Department worksIn;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Project> projects;
+    @JoinTable(name = "employee_projects", joinColumns = {@JoinColumn(name = "employee_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "project_id", referencedColumnName = "id")})
+    private Set<Project> projects;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Dependent> dependents;
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "employee")
+    private Set<Dependent> dependents;
 }

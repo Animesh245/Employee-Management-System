@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -34,8 +35,14 @@ public class ProjectServiceImpl implements ProjectService
     @Override
     public List<Project> findByEmployee(String employeeName)
     {
-        Employee employee = employeeService.findEmployeeByName(employeeName);
-        return projectRepository.findProjectsByEmployeesContaining(employee);
+        return projectRepository.findEmployeesByProject(projectName);
+    }
+
+    @Override
+    public Set<Project> findProjectsByDepartment(String departmentName)
+    {
+        Department department = departmentService.findDepartmentByName(departmentName);
+        return projectRepository.findProjectsByDepartment(department);
     }
 
     @Override

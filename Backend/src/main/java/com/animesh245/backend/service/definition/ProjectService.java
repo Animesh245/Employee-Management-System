@@ -5,11 +5,16 @@ import com.animesh245.backend.dtos.response.ResponseProject;
 import com.animesh245.backend.entity.Project;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ProjectService
 {
-    List<Project> findByEmployee(String employeeName);
+    List<Employee> findEmployeesByProject(String projectName);
 
+
+//    List<Project> findByEmployee(String employeeName);
+
+Set<Project> findProjectsByDepartment(String departmentName);
     Project findByName(String projectName);
 
     void saveProject(RequestProject requestProject);

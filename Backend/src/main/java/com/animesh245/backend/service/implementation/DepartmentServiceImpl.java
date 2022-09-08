@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -94,7 +95,7 @@ public class DepartmentServiceImpl implements DepartmentService
     @Override
     public ResponseDepartment entityToDto(Department department)
     {
-        List<Project> projectList = department.getProjects();
+        Set<Project> projectList = department.getProjects();
         var projectNameList = new ArrayList<String>();
         for (Project project: projectList)
         {
