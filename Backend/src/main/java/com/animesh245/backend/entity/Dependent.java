@@ -2,15 +2,14 @@ package com.animesh245.backend.entity;
 
 import com.animesh245.backend.enums.Gender;
 import com.animesh245.backend.enums.Relationship;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 
 import javax.persistence.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "dependents")
 public class Dependent

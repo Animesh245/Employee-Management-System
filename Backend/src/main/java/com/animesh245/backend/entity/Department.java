@@ -1,15 +1,13 @@
 package com.animesh245.backend.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "departments")
 public class Department
@@ -24,9 +22,8 @@ public class Department
     @Column(name = "location")
     private String deptLocation;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "manager", referencedColumnName = "id")
-    private Employee deptManager;
+    @Column(name = "manager_name")
+    private String deptManager;
 
     @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "worksIn",cascade = CascadeType.ALL)
     private Set<Employee> employeeList;

@@ -2,17 +2,15 @@ package com.animesh245.backend.entity;
 
 import com.animesh245.backend.enums.Role;
 import com.animesh245.backend.enums.WorkSchedule;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "employees")
 public class Employee
