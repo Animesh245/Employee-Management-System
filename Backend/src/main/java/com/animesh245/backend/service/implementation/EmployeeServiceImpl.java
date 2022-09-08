@@ -11,6 +11,7 @@ import com.animesh245.backend.exception.NotFoundException;
 import com.animesh245.backend.repository.EmployeeRepository;
 import com.animesh245.backend.service.definition.*;
 import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -28,7 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService
 
     private final FileService fileService;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, DepartmentService departmentService, FileService fileService)
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, @Lazy DepartmentService departmentService,@Lazy ProjectService projectService,@Lazy FileService fileService)
     {
         this.employeeRepository = employeeRepository;
         this.departmentService = departmentService;

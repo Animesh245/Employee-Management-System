@@ -10,6 +10,7 @@ import com.animesh245.backend.service.definition.DepartmentService;
 import com.animesh245.backend.service.definition.EmployeeService;
 import com.animesh245.backend.service.definition.ProjectService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,7 +26,7 @@ public class ProjectServiceImpl implements ProjectService
     private final EmployeeService   employeeService;
     private final DepartmentService departmentService;
 
-    public ProjectServiceImpl(ProjectRepository projectRepository, EmployeeService employeeService, DepartmentService departmentService)
+    public ProjectServiceImpl(ProjectRepository projectRepository, @Lazy EmployeeService employeeService,@Lazy DepartmentService departmentService)
     {
         this.projectRepository = projectRepository;
         this.employeeService = employeeService;
