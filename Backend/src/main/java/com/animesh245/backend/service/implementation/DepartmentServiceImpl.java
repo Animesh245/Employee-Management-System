@@ -3,13 +3,14 @@ package com.animesh245.backend.service.implementation;
 import com.animesh245.backend.dtos.request.RequestDepartment;
 import com.animesh245.backend.dtos.response.ResponseDepartment;
 import com.animesh245.backend.entity.Department;
+import com.animesh245.backend.entity.Employee;
 import com.animesh245.backend.entity.Project;
 import com.animesh245.backend.enums.Role;
 import com.animesh245.backend.exception.NotFoundException;
 import com.animesh245.backend.repository.DepartmentRepository;
-import com.animesh245.backend.repository.ProjectRepository;
 import com.animesh245.backend.service.definition.DepartmentService;
 import com.animesh245.backend.service.definition.EmployeeService;
+import com.animesh245.backend.service.definition.ProjectService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -24,19 +25,19 @@ import java.util.Set;
 public class DepartmentServiceImpl implements DepartmentService
 {
     private final DepartmentRepository departmentRepository;
-    private final ProjectRepository projectRepository;
+    private final ProjectService projectService;
     private final EmployeeService employeeService;
 
     public DepartmentServiceImpl(DepartmentRepository departmentRepository,@Lazy ProjectService projectService, @Lazy EmployeeService employeeService) {
         this.departmentRepository = departmentRepository;
-        this.projectRepository = projectRepository;
+        this.projectService = projectService;
         this.employeeService = employeeService;
     }
 
     @Override
     public Department findDepartmentByName(String departmentName)
     {
-        return departmentRepository.findDepartmentByDeptName(departmentName);
+        return departmentRepository.findByDeptName(departmentName);
     }
 
     @Override

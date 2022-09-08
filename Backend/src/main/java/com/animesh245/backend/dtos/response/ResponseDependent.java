@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class ResponseDependent
 {
+    private Long id;
     private String dependentName;
     private String  gender;
     private String  relationship;

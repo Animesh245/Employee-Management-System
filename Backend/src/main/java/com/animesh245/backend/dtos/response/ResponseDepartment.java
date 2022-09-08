@@ -9,8 +9,10 @@ import java.util.List;
 @Setter
 public class ResponseDepartment
 {
+    private Long id;
     private String deptName;
     private String deptLocation;
     private String deptManager;
     private List<String > projectList;
+    private List<String > employeeList;
 }

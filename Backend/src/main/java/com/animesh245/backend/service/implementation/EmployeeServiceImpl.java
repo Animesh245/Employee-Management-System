@@ -2,6 +2,7 @@ package com.animesh245.backend.service.implementation;
 
 import com.animesh245.backend.dtos.request.RequestEmployee;
 import com.animesh245.backend.dtos.response.ResponseEmployee;
+import com.animesh245.backend.entity.Department;
 import com.animesh245.backend.entity.Dependent;
 import com.animesh245.backend.entity.Employee;
 import com.animesh245.backend.entity.Project;
@@ -26,13 +27,14 @@ public class EmployeeServiceImpl implements EmployeeService
 {
     private final EmployeeRepository employeeRepository;
     private final DepartmentService departmentService;
-
+    private final ProjectService projectService;
     private final FileService fileService;
 
     public EmployeeServiceImpl(EmployeeRepository employeeRepository, @Lazy DepartmentService departmentService,@Lazy ProjectService projectService,@Lazy FileService fileService)
     {
         this.employeeRepository = employeeRepository;
         this.departmentService = departmentService;
+        this.projectService = projectService;
         this.fileService = fileService;
     }
 
@@ -58,7 +60,7 @@ public class EmployeeServiceImpl implements EmployeeService
     @Override
     public List<Employee> findEmployeesByProject(String projectName)
     {
-        return employeeRepository.findEmployeesByProjects(projectName);
+        return projectService.findEmployeesByProject(projectName);
     }
 
     @Override
@@ -112,6 +114,7 @@ public class EmployeeServiceImpl implements EmployeeService
         responseEmployee.setWorksIn(employee.getWorksIn().getDeptName());
         responseEmployee.setRole(employee.getRole().toString());
         responseEmployee.setProjectList(responseProjectList);
+        responseEmployee.setWorkSchedule(String.valueOf(employee.getWorkSchedule()));
         responseEmployee.setDependentList(responseDependentList);
 
         return responseEmployee;
@@ -120,6 +123,9 @@ public class EmployeeServiceImpl implements EmployeeService
     @Override
     public Employee dtoToEntity(RequestEmployee requestEmployee)
     {
+        Department department = departmentService.findDepartmentByName(requestEmployee.getWorksIn());
+        String path = fileService.uploadFile(requestEmployee.getProfilePhoto());
+
         var employee = new Employee();
         BeanUtils.copyProperties(requestEmployee, employee);
         employee.setDateOfBirth(LocalDate.parse(requestEmployee.getDateOfBirth()));
@@ -128,6 +134,8 @@ public class EmployeeServiceImpl implements EmployeeService
         employee.setDateOfJoin(LocalDate.parse(requestEmployee.getDateOfJoin()));
         employee.setRole(Role.valueOf(requestEmployee.getRole()));
 
+        employee.setWorksIn(department);
+        employee.setProfilePhotoPath(path);
         return employee;
     }
 }

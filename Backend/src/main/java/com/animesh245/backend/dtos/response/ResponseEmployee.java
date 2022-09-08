@@ -9,6 +9,7 @@ import java.util.List;
 @Setter
 public class ResponseEmployee
 {
+    private Long id;
     private String fullName;
     private String address;
     private String email;

@@ -26,6 +26,9 @@ public class Employee
     @Column(name = "address")
     private String address;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "dob")
     private LocalDate dateOfBirth;
 
@@ -43,8 +46,8 @@ public class Employee
 //    @Column(name = "end_time")
 //    private LocalDateTime projectEndTime;
 
-    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "deptManager")
-    private Department department; //department manager
+//    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "deptManager")
+//    private Department department; //department manager
 
 //    @JoinColumn(name = "current_project", referencedColumnName = "id")
 //    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)

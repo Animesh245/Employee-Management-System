@@ -22,8 +22,8 @@ public class Project
     @Column(name = "project_brief", columnDefinition = "TEXT")
     private String projectBrief;
 
-    @Column(name = "working_on")
-    private Long workingOn;
+//    @Column(name = "working_on")
+//    private Long workingOn;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "department_id", referencedColumnName = "id")

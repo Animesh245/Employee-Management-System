@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class RequestDependent
 {
-    private String dependentName;
+    private String  dependentName;
     private String  gender;
     private String  relationship;
     private String  employeeName;

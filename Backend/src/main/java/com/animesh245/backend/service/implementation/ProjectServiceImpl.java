@@ -2,6 +2,7 @@ package com.animesh245.backend.service.implementation;
 
 import com.animesh245.backend.dtos.request.RequestProject;
 import com.animesh245.backend.dtos.response.ResponseProject;
+import com.animesh245.backend.entity.Department;
 import com.animesh245.backend.entity.Employee;
 import com.animesh245.backend.entity.Project;
 import com.animesh245.backend.exception.NotFoundException;
@@ -102,27 +103,30 @@ public class ProjectServiceImpl implements ProjectService
 
         var project = new Project();
         BeanUtils.copyProperties(requestProject,project);
+        project.setProjectName(requestProject.getProjectName());
         project.setDepartment(department);
-        project.setEmployees(employeeList);
+//        project.setEmployees(employeeList);
+
         return project;
     }
 
     @Override
     public ResponseProject entityToDto(Project project)
     {
-        var employeeList = employeeService.findEmployeesByProject(project.getProjectName());
-        var employeeNameList = new ArrayList<String>();
-
-        for (Employee employee: employeeList)
-        {
-            var employeeName = employeeService.entityToDto(employee);
-            employeeNameList.add(employeeName.getFullName());
-        }
+//        var employeeList = projectRepository.findEmployeesByProjectName(project.getProjectName());
+//        var employeeNameList = new ArrayList<String>();
+//
+//        for (Employee employee: employeeList)
+//        {
+//            var employeeName = employeeService.entityToDto(employee);
+//            employeeNameList.add(employeeName.getFullName());
+//        }
 
         var responseProject = new ResponseProject();
         BeanUtils.copyProperties(project, responseProject);
-        responseProject.setDepartment(project.getDepartment().toString());
-        responseProject.setEmployeeList(employeeNameList);
+        responseProject.setProjectName(project.getProjectName());
+        responseProject.setDepartment(project.getDepartment().getDeptName());
+//        responseProject.setEmployeeList(employeeNameList);
         return responseProject;
     }
 }

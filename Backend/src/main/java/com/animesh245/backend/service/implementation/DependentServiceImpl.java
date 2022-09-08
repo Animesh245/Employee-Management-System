@@ -85,9 +85,10 @@ public class DependentServiceImpl implements DependentService
     {
         var responseDependent = new ResponseDependent();
         BeanUtils.copyProperties(dependent, responseDependent);
-        responseDependent.setDependentName(dependent.getEmployee().getFullName());
+        responseDependent.setDependentName(dependent.getDependentName());
         responseDependent.setRelationship(dependent.getRelationship().toString());
         responseDependent.setGender(dependent.getGender().toString());
+        responseDependent.setEmployeeName(dependent.getEmployee().getFullName());
         return responseDependent;
     }
 }
