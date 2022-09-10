@@ -4,21 +4,61 @@
 
 
     <div class="form-group">
-        <label> First Name </label>
-        <input type="text" class="form-control" id="firstName" [(ngModel)] = "employee.firstName" name="firstName"> 
+        <label> Full Name </label>
+        <input type="text" class="form-control" id="fullName" [(ngModel)] = "employee.fullName" name="fullName">
     </div>
 
+
     <div class="form-group">
-        <label> Last Name </label>
-        <input type="text" class="form-control" id="lastName" [(ngModel)] = "employee.lastName" name="lastName"> 
+        <label> Address </label>
+        <input type="text" class="form-control" id="address" [(ngModel)] = "employee.address" name="address">
     </div>
+
 
     <div class="form-group">
         <label> Email </label>
         <input type="email" class="form-control" id="email" [(ngModel)] = "employee.email" name="email">
     </div>
+
+
+    <div class="form-group">
+        <label> Work Schedule </label>
+        <input type="text" class="form-control" id="workSchedule" [(ngModel)] = "employee.workSchedule" name="workSchedule" readonly>
+    </div>
+
+
+    <div class="form-group">
+        <label> Role </label>
+        <input type="text" class="form-control" id="role" [(ngModel)] = "employee.role" name="role" readonly>
+    </div>
+
+    <div class="form-group">
+        <label> On Leave </label>
+        <input type="text" class="form-control" id="onLeave" [(ngModel)] = "employee.onLeave" name="onLeave">
+    </div>
+
+    <div class="form-group">
+        <label> Department </label>
+        <input type="text" class="form-control" id="department" [(ngModel)] = "employee.worksIn" name="department" readonly>
+    </div>
+
+    <div class="form-group">
+        <label> Date of Join </label>
+        <input type="text" class="form-control" id="dateOfJoin" [(ngModel)] = "employee.dateOfJoin" name="dateOfJoin" readonly>
+    </div>
+
+    <div class="form-group">
+        <label> Date of Birth </label>
+        <input type="text" class="form-control" id="dateOfBirth" [(ngModel)] = "employee.dateOfBirth" name="dateOfBirth" readonly>
+    </div>
+
+    <div class="form-group">
+        <label> Profile Photo </label>
+        <input type="file" accept="image/*" class="form-control" id="profilePhoto" [(ngModel)] = "employee.profilePhoto" name="profilePhoto">
+    </div>
+
     <br>
 
-    <button class="btn btn-success" type="submit"> Submit </button>
+    <button class="btn btn-success" type="submit">Save</button>
 </form>
 </div>

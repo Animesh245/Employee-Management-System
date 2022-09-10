@@ -13,12 +13,12 @@ export class EmployeeService {
   constructor(private httpClient: HttpClient) { }
 
   getEmployeesList(): Observable<Employee[]>{
-    return this.httpClient.get<Employee[]>(`${this.baseURL}`);
+    return this.httpClient.get<Employee[]>(`${this.baseURL}/`);
   }
 
   //this is a post method, will be used to send data to api
   createEmployee(employee: Employee): Observable<Object>{
-    return this.httpClient.post<Object>(`${this.baseURL}`, employee);
+    return this.httpClient.post<Object>(`${this.baseURL}/`, employee);
   }
 
   getEmployeeById(id: number): Observable<Employee>{

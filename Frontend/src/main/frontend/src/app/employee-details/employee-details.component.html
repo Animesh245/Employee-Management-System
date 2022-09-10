@@ -1,16 +1,20 @@
 <div class="col-md-6 offset-md-3">
-    <div class="card" >
+
+    <div class="card" style="width: 18rem;">
+        <img src="EMS_Files/{{employee.profilePhotoPath}}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h4 class="text-primary"> Employee Details </h4>
-        <div>
-            <label> <b> First Name: </b> {{employee.firstName}}</label>
+          <h5 class="card-title">{{employee.fullName}}</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b> Date of Join: </b> {{employee.dateOfJoin}}</li>
+            <li class="list-group-item"><b> Address:  </b> {{employee.address}}</li>
+            <li class="list-group-item"><b> Email ID:  </b> {{employee.email}}</li>
+            <li class="list-group-item"><b> Date of Birth:  </b> {{employee.dateOfBirth}}</li>
+            <li class="list-group-item"><b> Work Schedule:  </b> {{employee.workSchedule}}</li>
+            <li class="list-group-item"><b> Role:  </b> {{employee.role}}</li>
+            <li class="list-group-item"><b> On Leave:  </b> {{employee.onLeave}}</li>
+            <li class="list-group-item"><b> Works In:  </b> {{employee.worksIn}}</li>
+          </ul>
         </div>
-        <div>
-            <label> <b> Last Name: </b> {{employee.lastName}}</label>
-        </div>
-        <div>
-            <label> <b> Email ID:  </b> {{employee.email}}</label>
-        </div>
-        </div>
-    </div>
-    </div> 
+      </div>
+
+</div>
