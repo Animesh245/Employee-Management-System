@@ -20,7 +20,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "/home/warrior245/Documents/EMS_Files",
+                "output": "EMS_Files/"
+              }
             ],
             "styles": [
               "src/styles.css"
