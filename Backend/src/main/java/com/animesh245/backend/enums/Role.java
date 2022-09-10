@@ -2,5 +2,5 @@ package com.animesh245.backend.enums;
 
 public enum Role
 {
-    MANAGER, EMPLOYEE
+    ROLE_MANAGER, ROLE_EMPLOYEE, ROLE_ADMIN
 }

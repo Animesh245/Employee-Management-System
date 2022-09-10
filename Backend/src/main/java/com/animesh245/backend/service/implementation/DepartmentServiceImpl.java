@@ -111,7 +111,7 @@ public class DepartmentServiceImpl implements DepartmentService
         for (Employee employee: employeeList)
         {
             employeeNameList.add(employee.getFullName());
-            if (employee.getRole() == Role.MANAGER)
+            if (employee.getRole() == Role.ROLE_MANAGER)
             {
                 manager = employee.getFullName();
             }
