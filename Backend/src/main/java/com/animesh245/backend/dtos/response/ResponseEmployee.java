@@ -16,6 +16,7 @@ public class ResponseEmployee
     private String dateOfBirth;
     private String workSchedule;
     private String dateOfJoin;
+    private String onLeave;
     private String worksIn;
     private String role;
     private List<String > projectList;

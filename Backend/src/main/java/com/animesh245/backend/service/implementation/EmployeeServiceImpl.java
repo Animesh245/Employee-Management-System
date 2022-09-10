@@ -116,6 +116,7 @@ public class EmployeeServiceImpl implements EmployeeService
         responseEmployee.setProjectList(responseProjectList);
         responseEmployee.setWorkSchedule(String.valueOf(employee.getWorkSchedule()));
         responseEmployee.setDependentList(responseDependentList);
+        responseEmployee.setOnLeave(employee.getOnLeave().toString());
 
         return responseEmployee;
     }
