@@ -13,6 +13,9 @@ import com.animesh245.backend.repository.EmployeeRepository;
 import com.animesh245.backend.service.definition.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -138,5 +141,17 @@ public class EmployeeServiceImpl implements EmployeeService
         employee.setWorksIn(department);
         employee.setProfilePhotoPath(path);
         return employee;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException
+    {
+        Employee employee = employeeRepository.findEmployeeByEmail(email);
+        if(employee == null)
+        {
+            throw new UsernameNotFoundException(email);
+        }
+
+        return new User(employee.getEmail(), employee.getPassword(), employee.getAuthorities());
     }
 }

@@ -3,10 +3,11 @@ package com.animesh245.backend.service.definition;
 import com.animesh245.backend.dtos.request.RequestEmployee;
 import com.animesh245.backend.dtos.response.ResponseEmployee;
 import com.animesh245.backend.entity.Employee;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface EmployeeService
+public interface EmployeeService extends UserDetailsService
 {
     List<ResponseEmployee> getEmployees();
 
