@@ -147,11 +147,13 @@ public class EmployeeServiceImpl implements EmployeeService
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException
     {
         Employee employee = employeeRepository.findEmployeeByEmail(email);
-        if(employee == null)
+
+        if(email.equals(employee.getEmail()))
+        {
+            return new User(employee.getEmail(), employee.getPassword(), employee.getAuthorities());
+        }else
         {
             throw new UsernameNotFoundException(email);
         }
-
-        return new User(employee.getEmail(), employee.getPassword(), employee.getAuthorities());
     }
 }
