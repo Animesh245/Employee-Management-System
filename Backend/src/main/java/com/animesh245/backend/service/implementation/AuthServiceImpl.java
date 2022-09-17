@@ -44,8 +44,7 @@ public class AuthServiceImpl implements AuthService, Serializable
     {
         return Jwts.parserBuilder()
                 .setSigningKeyResolver(authSignInKeyResolver)
-                .build().parseClaimsJwt(token).getBody();
-//                parser().setSigningKey(getSigningKey()).parseClaimsJwt(token).getBody();
+                .build().parseClaimsJws(token).getBody();
     }
 
     public Boolean isTokenExpired(String token)
@@ -58,17 +57,6 @@ public class AuthServiceImpl implements AuthService, Serializable
         Map<String , Object> claims = new HashMap<>();
         return createToken(claims, userDetails.getUsername());
     }
-
-//    public void generateToken(Employee employee)
-//    {
-//        //Replace token with JWT
-//        var claims = new HashMap<String , Object>();
-//        claims.put("iss", employee.getId());
-//        claims.put("exp", System.currentTimeMillis() + 1000 * 60 * 60 * 12);
-//        claims.put("iat", System.currentTimeMillis());
-//        claims.put("sub", employee.getEmail());
-//        claims.put("aud", employee.getAuthorities().toString());
-//    }
 
     public String createToken(Map<String, Object> claims, String subject)
     {
