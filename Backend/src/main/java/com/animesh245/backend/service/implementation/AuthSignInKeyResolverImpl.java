@@ -36,11 +36,11 @@ public class AuthSignInKeyResolverImpl implements AuthSignInKeyResolver
 
     @Override
     public Key resolveSigningKey(JwsHeader jwsHeader, Claims claims) {
-        return null; // this.getSecretKey();
+        return this.getSecretKey(); // this.getSecretKey();
     }
 
     @Override
     public Key resolveSigningKey(JwsHeader jwsHeader, String s) {
-        return null; //this.getSecretKey();
+        return this.getSecretKey(); //this.getSecretKey();
     }
 }
