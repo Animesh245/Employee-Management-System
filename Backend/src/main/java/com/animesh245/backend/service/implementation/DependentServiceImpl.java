@@ -9,6 +9,7 @@ import com.animesh245.backend.exception.NotFoundException;
 import com.animesh245.backend.repository.DependentRepository;
 import com.animesh245.backend.service.definition.DependentService;
 import com.animesh245.backend.service.definition.EmployeeService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +19,11 @@ import java.util.List;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class DependentServiceImpl implements DependentService
 {
     private final EmployeeService employeeService;
     private final DependentRepository dependentRepository;
-
-    public DependentServiceImpl(EmployeeService employeeService, DependentRepository dependentRepository) {
-        this.employeeService = employeeService;
-        this.dependentRepository = dependentRepository;
-    }
 
     @Override
     public void saveDependent(RequestDependent requestDependent)

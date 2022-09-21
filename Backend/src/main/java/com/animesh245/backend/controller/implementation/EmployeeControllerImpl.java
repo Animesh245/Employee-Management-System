@@ -4,6 +4,7 @@ import com.animesh245.backend.controller.definition.EmployeeController;
 import com.animesh245.backend.dtos.request.RequestEmployee;
 import com.animesh245.backend.dtos.response.ResponseEmployee;
 import com.animesh245.backend.service.definition.EmployeeService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,13 +14,10 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@AllArgsConstructor
 public class EmployeeControllerImpl implements EmployeeController
 {
     private final EmployeeService employeeService;
-
-    public EmployeeControllerImpl(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
 
     //Get All Employees
     public List<ResponseEmployee> getAllEmployees()

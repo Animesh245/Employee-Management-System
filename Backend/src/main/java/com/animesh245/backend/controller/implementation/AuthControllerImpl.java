@@ -5,6 +5,7 @@ import com.animesh245.backend.dtos.request.JwtRequest;
 import com.animesh245.backend.dtos.response.JwtResponse;
 import com.animesh245.backend.service.definition.AuthService;
 import com.animesh245.backend.service.definition.EmployeeService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,17 +14,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@AllArgsConstructor
 public class AuthControllerImpl implements AuthController
 {
     private final EmployeeService employeeService;
     private final AuthService authService;
     private final AuthenticationManager authenticationManager;
-
-    public AuthControllerImpl(EmployeeService employeeService, AuthService authService, AuthenticationManager authenticationManager) {
-        this.employeeService = employeeService;
-        this.authService = authService;
-        this.authenticationManager = authenticationManager;
-    }
 
     @Override
     public String login()

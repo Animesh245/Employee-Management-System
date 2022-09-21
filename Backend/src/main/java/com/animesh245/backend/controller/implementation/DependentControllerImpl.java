@@ -4,6 +4,7 @@ import com.animesh245.backend.controller.definition.DependentController;
 import com.animesh245.backend.dtos.request.RequestDependent;
 import com.animesh245.backend.dtos.response.ResponseDependent;
 import com.animesh245.backend.service.definition.DependentService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,13 +13,10 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@AllArgsConstructor
 public class DependentControllerImpl implements DependentController
 {
     private final DependentService dependentService;
-
-    public DependentControllerImpl(DependentService dependentService) {
-        this.dependentService = dependentService;
-    }
 
     @Override
     public List<ResponseDependent> getAllDependents()

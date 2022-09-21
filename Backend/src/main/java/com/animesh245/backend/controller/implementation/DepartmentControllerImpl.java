@@ -4,6 +4,7 @@ import com.animesh245.backend.controller.definition.DepartmentController;
 import com.animesh245.backend.dtos.request.RequestDepartment;
 import com.animesh245.backend.dtos.response.ResponseDepartment;
 import com.animesh245.backend.service.definition.DepartmentService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,13 +13,10 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@AllArgsConstructor
 public class DepartmentControllerImpl implements DepartmentController
 {
     private final DepartmentService departmentService;
-
-    public DepartmentControllerImpl(DepartmentService departmentService) {
-        this.departmentService = departmentService;
-    }
 
     @Override
     public List<ResponseDepartment> getAllDepartments()

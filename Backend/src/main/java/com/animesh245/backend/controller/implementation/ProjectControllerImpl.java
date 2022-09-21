@@ -4,6 +4,7 @@ import com.animesh245.backend.controller.definition.ProjectController;
 import com.animesh245.backend.dtos.request.RequestProject;
 import com.animesh245.backend.dtos.response.ResponseProject;
 import com.animesh245.backend.service.definition.ProjectService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,13 +13,10 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@AllArgsConstructor
 public class ProjectControllerImpl implements ProjectController
 {
     private final ProjectService projectService;
-
-    public ProjectControllerImpl(ProjectService projectService) {
-        this.projectService = projectService;
-    }
 
     @Override
     public List<ResponseProject> getAllProjects()
