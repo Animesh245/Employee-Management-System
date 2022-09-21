@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin// when modules are run separately
 @RequestMapping(value = "/api/v1/departments")
 public interface DepartmentController
 {

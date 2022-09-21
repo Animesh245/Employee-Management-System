@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping(value = "/auth")
-@CrossOrigin
 public interface AuthController
 {
     @GetMapping(value = "/login")
