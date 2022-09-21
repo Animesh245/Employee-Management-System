@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
@@ -10,11 +11,24 @@ const routes: Routes = [
   //by default routing
   {path:'', redirectTo: 'employees', pathMatch: 'full'},
   //for all employees
-  {path: 'employees', component: EmployeeListComponent},
+  {
+    path: 'employees',
+    component: EmployeeListComponent,
+    canActivate: [AuthGuard]
+  },
   //routing for create-employee
-  {path: 'create-employee', component: CreateEmployeeComponent},
+  {
+    path: 'create-employee', 
+    component: CreateEmployeeComponent,
+    canActivate: [AuthGuard]
+  },
   //for update-employee
-  {path: 'update-employee/:id', component: UpdateEmployeeComponent},
+  {
+    path: 'update-employee/:id',
+    component: UpdateEmployeeComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
+  },
   //for view-employee details
   {
     path: 'employee-details/:id',
