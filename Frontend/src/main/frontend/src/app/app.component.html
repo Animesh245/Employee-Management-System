@@ -3,8 +3,12 @@
         <li class="nav-item">
             <a routerLink="employees" routerLinkActive="active" class="nav-link">Employee List</a>
         </li>
-        <li class="nav-item">
-            <a routerLink="create-employee" routerLinkActive="active" class="nav-link">Add Employee</a>
+    </ul>
+
+    <ul class="nav navbar-nav " style="margin-left: auto;padding: 2px;" >
+        <li class="nav-item " >
+            <a  class="nav-link" routerLinkActive="active"  routerLink="login" *ngIf="!authService.isLoggedIn()">Login</a>
+            <a  class="nav-link bg-danger" routerLinkActive="active"  routerLink="login" *ngIf="authService.isLoggedIn()" (click)="authService.logout()">Logout</a>
         </li>
     </ul>
 </nav>
