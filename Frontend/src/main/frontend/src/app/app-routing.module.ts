@@ -9,7 +9,11 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 
 const routes: Routes = [
   //by default routing
-  {path:'', redirectTo: 'employees', pathMatch: 'full'},
+  {
+    path:'', 
+    redirectTo: 'employees', 
+    pathMatch: 'full'
+  },
   //for all employees
   {
     path: 'employees',
