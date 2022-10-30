@@ -1,9 +1,10 @@
 
 # Employee Webapp
 
-This is a simple REST Api project, capable of doing all the CRUD operations.
-
-This project was done to practise materials from an online course.
+A RESTful web service developed using Spring Boot where a manager can access all
+the information related to employees, like employee attendance or absence data and department
+information, employee dependent information etc. An Employee can create their profile using
+email, giving details and uploading their photo.
 
     
 ## Demo
